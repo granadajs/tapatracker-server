@@ -14,7 +14,6 @@ gem 'jquery-rails'
 
 gem "devise"
 gem "sqlite3"
-gem "haml-rails"
 gem "compass-rails", :group => :assets
 gem "bootstrap-sass"
 gem "rails_bootstrap_helpers"
