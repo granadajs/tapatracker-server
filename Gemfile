@@ -20,6 +20,10 @@ gem "rails_bootstrap_helpers"
 gem "pry-rails", :group => :development
 gem "pry-nav", :group => :development
 
+group :test, :development do
+  gem 'spinach-rails'  
+end
+
 group :test do
   gem 'rspec-rails'
   gem 'rb-fsevent', '~> 0.9.1'
@@ -27,8 +31,8 @@ group :test do
   gem 'listen', git: "git://github.com/guard/listen.git"
   gem 'launchy'
   gem 'capybara'
-  gem 'capybara-webkit'
-  #gem 'poltergeist'
+  # gem 'capybara-webkit'
+  gem 'poltergeist'
   gem 'mocha', require: "mocha_standalone"
   gem 'growl'
   gem 'faker'
