@@ -20,3 +20,4 @@ public/system/*
 tmp/restart.txt
 coverage/
 coverage.data
+.rvmrc
