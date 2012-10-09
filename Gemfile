@@ -19,6 +19,9 @@ gem "bootstrap-sass"
 gem "rails_bootstrap_helpers"
 gem "pry-rails", :group => :development
 gem "pry-nav", :group => :development
+gem 'omniauth'
+gem 'oauth2'
+gem 'omniauth-facebook'
 
 group :test, :development do
   gem 'spinach-rails'  
@@ -31,6 +34,7 @@ group :test do
   gem 'listen', git: "git://github.com/guard/listen.git"
   gem 'launchy'
   gem 'capybara'
+  gem 'faker'
   # gem 'capybara-webkit'
   gem 'poltergeist'
   gem 'mocha', require: "mocha_standalone"

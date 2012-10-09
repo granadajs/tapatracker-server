@@ -3,7 +3,9 @@ Tapatracker::Application.routes.draw do
   root :to => 'pages#home'
   get "pages/home"
 
-  devise_for :users
+  devise_for :user, :controllers => { 
+    :omniauth_callbacks => "omniauth_callbacks" 
+  }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

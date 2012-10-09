@@ -1,2 +1,10 @@
 <h1> Pages#home</h1>
-<p>Find me in app/views/pages/home.html.haml</p>
+<% if current_user %>
+	<p>Signed in as: <%= current_user.name %></p>
+	<%= link_to "Sign out", destroy_user_session_path %>
+<% else %>
+	<p>Find me in app/views/pages/home.html.erb</p>
+	<%= link_to "Sign in with Facebook", 	
+							user_omniauth_authorize_path(:facebook), 
+							:class => "btn btn-primary btn-large" %>
+<% end %>
