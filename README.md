@@ -17,3 +17,10 @@ For tapatracker-server.dev add
 ### Install poltergeist
 Used for running javascript tests with capybara
 See instructions on https://github.com/jonleighton/poltergeist
+
+
+### Spinach
+To run integration tests run
+$ bundle exec spinach
+
+See https://github.com/codegram/spinach and https://github.com/codegram/spinach-rails for more info.
