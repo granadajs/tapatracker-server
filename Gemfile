@@ -19,21 +19,12 @@ gem "bootstrap-sass"
 gem "rails_bootstrap_helpers"
 gem "pry-rails", :group => :development
 gem "pry-nav", :group => :development
-gem 'omniauth'
-gem 'oauth2'
-gem 'omniauth-facebook'
-
-group :test, :development do
-  gem 'spinach-rails'  
-end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'steak'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'spork', '~> 1.0rc'
-  gem 'listen', git: "git://github.com/guard/listen.git"
   gem 'launchy'
-  gem 'capybara'
   gem 'faker'
   # gem 'capybara-webkit'
   gem 'poltergeist'
@@ -46,14 +37,7 @@ group :test do
   gem 'database_cleaner'
 end
 
-# To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
 gem 'jbuilder'
-
-# Use unicorn as the app server
 gem 'unicorn'
-
-# Deploy with Capistrano
 gem 'capistrano'

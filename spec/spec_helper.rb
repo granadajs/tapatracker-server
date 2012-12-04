@@ -15,7 +15,6 @@ Spork.prefork do
   #require 'capybara/poltergeist'
 
   RSpec.configure do |config|
-    include Sorcery::TestHelpers::Rails
 
     config.include FactoryGirl::Syntax::Methods
     config.include LoginMacros
