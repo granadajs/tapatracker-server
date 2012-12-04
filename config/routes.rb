@@ -1,7 +1,5 @@
 Tapatracker::Application.routes.draw do
-
+  devise_for :users
   root :to => 'pages#home'
   get "pages/home"
-
-  devise_for :user
 end
