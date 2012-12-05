@@ -14,7 +14,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
   def cache_dir
-    "#{Rails.root}/tmp/uploads/#{Rails.env}/brands/logos"
+    "#{Rails.root}/tmp/uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # Override the directory where uploaded files will be stored.

@@ -3,7 +3,7 @@ class Tapa < ActiveRecord::Base
 
   has_many :categorizations
   has_many :categories, through: :categorizations
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
 
   belongs_to :location
 

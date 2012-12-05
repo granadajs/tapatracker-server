@@ -6,6 +6,14 @@ feature 'Tapa Creation', %q{
   I want create a tapa
 } do
 
+  background do
+    Tapa.destroy_all
+    Rating.destroy_all
+    Category.destroy_all
+    Categorization.destroy_all
+    Location.destroy_all
+  end
+
   scenario 'create new tapa' do
     visit new_tapa_path
     fill_in "Title", with: "Egg roll"
