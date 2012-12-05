@@ -12,6 +12,8 @@ end
 
 gem 'slim-rails'
 gem 'jquery-rails'
+gem 'carrierwave'
+gem 'mini_magick'
 
 gem "devise"
 gem "sqlite3"

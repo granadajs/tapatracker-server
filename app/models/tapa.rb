@@ -7,6 +7,8 @@ class Tapa < ActiveRecord::Base
 
   belongs_to :location
 
+  mount_uploader :image, ImageUploader
+
   def category=(name)
     category = Category.find_or_create_by_name name
     category.tapas << self
@@ -29,4 +31,12 @@ class Tapa < ActiveRecord::Base
     ratings.sum(&:score) / ratings.count
   end
 
+  def set_location=(name)
+    local = Location.find_or_create_by_name name
+    self.location = local
+  end
+
+  def set_location
+    ""
+  end
 end

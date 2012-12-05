@@ -2,4 +2,13 @@ class TapasController < ApplicationController
   def new
     @tapa = Tapa.new
   end
+
+  def create
+    @tapa = Tapa.new(params[:tapa])
+    if @tapa.save
+      redirect_to tapa_path(@tapa), notice: "Tapa review saved!"
+    else
+      render :new, alert: "Error processing your request!"
+    end
+  end
 end

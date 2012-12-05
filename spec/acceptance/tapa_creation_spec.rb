@@ -10,13 +10,13 @@ feature 'Tapa Creation', %q{
     visit new_tapa_path
     fill_in "Title", with: "Egg roll"
     fill_in "Category", with: "asian"
-    click_button "rate_4"
+    select '4', from: "Rating"
     fill_in "Description", with: "Soo tasty"
-    attach_file("image", tapa_image)
-    fill_in "location", with: "Juan's Hola House"
+    attach_file("tapa_image", tapa_image)
+    fill_in "Location", with: "Juan's Hola House"
 
     expect {
-      click_button "Submit"
+      click_button "Save"
     }.to change(Tapa, :count).by(1)
 
     tapa = Tapa.first
