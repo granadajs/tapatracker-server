@@ -3,6 +3,7 @@ class Tapa < ActiveRecord::Base
 
   has_many :categorizations
   has_many :categories, through: :categorizations
+  has_many :ratings
 
   def category=(name)
     category = Category.find_or_create_by_name name
@@ -12,4 +13,18 @@ class Tapa < ActiveRecord::Base
   def category
     categories.last.name if categories.last
   end
+
+  def rating=(score)
+    rating = Rating.create(score: score)
+    rating.tapa = self
+  end
+
+  def rating
+    0
+  end
+
+  def average_rating
+    ratings.sum(&:score) / ratings.count
+  end
+
 end
