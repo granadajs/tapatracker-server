@@ -11,4 +11,8 @@ class TapasController < ApplicationController
       render :new, alert: "Error processing your request!"
     end
   end
+
+  def show
+    @tapa = Tapa.find params[:id]
+  end
 end

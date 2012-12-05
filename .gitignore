@@ -17,6 +17,7 @@ config/database.yml
 config/mongoid.yml
 public/cache/
 public/system/*
+public/uploads/*
 tmp/restart.txt
 coverage/
 coverage.data

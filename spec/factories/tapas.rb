@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :tapa do
     title "Tortilla"
     description "Muy bueno. Muy muy."
-    image "temp_path"
+    image { File.open(File.expand_path("../../acceptance/fixtures/tapa_image.jpg", __FILE__)) }
   end
 end

@@ -21,7 +21,7 @@ feature 'Tapa Creation', %q{
 
     tapa = Tapa.first
     expect(tapa.title).to eq("Egg roll")
-    expect(tapa.rating.value).to eq(4)
+    expect(tapa.ratings.first.score).to eq(4)
   end
 
 end

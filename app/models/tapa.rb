@@ -19,8 +19,8 @@ class Tapa < ActiveRecord::Base
   end
 
   def rating=(score)
-    rating = Rating.create(score: score)
-    rating.tapa = self
+    rating = Rating.create(score: score.to_i)
+    ratings << rating
   end
 
   def rating
