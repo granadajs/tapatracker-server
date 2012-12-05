@@ -1,2 +1,16 @@
-fieldset
-  legend New Tapa
+= form_for @tapa do |f|
+  fieldset
+    legend New Tapa
+    = f.label :title
+    = f.text_field :title
+    = f.label :category
+    = f.text_field :category
+    = f.label :rating
+    = f.select :rating, (1..5)
+    = f.label :description
+    = f.text_area :description
+    = f.label :image
+    = f.file_field :image
+    = f.label :location
+    = f.text_field :location
+    = f.submit
