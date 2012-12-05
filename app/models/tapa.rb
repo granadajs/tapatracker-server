@@ -5,6 +5,8 @@ class Tapa < ActiveRecord::Base
   has_many :categories, through: :categorizations
   has_many :ratings
 
+  belongs_to :location
+
   def category=(name)
     category = Category.find_or_create_by_name name
     category.tapas << self
