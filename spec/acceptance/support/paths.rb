@@ -4,6 +4,10 @@ module NavigationHelpers
   def homepage
     "/"
   end
+
+  def sign_up_path
+    "/users/sign_up"
+  end
 end
 
 RSpec.configuration.include NavigationHelpers, :type => :acceptance
