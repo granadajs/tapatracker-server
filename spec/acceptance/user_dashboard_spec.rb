@@ -19,6 +19,7 @@ feature 'User dashboard', %q{
     user = User.find_by_email email
 
     page.should have_content email
+    page.should have_selector "#profile-image img"
     page.should have_content "Reviews"
     page.should have_content "Locations Visited"
     page.should have_content "Average Review"
