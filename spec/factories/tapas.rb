@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :tapa do
-    title "Tortilla"
-    description "Muy bueno. Muy muy."
+    title Faker::Lorem.sentence
+    description Faker::Lorem.sentences(2).join(' ')
     image { File.open(File.expand_path("../../acceptance/fixtures/tapa_image.jpg", __FILE__)) }
   end
 end

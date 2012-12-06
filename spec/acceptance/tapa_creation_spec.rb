@@ -16,7 +16,8 @@ feature 'Tapa Creation', %q{
 
   scenario 'create new tapa' do
     visit new_tapa_path
-    fill_in "Title", with: "Egg roll"
+    title = "Egg roll"
+    fill_in "Title", with: title
     fill_in "Category", with: "asian"
     select '4', from: "Rating"
     fill_in "Description", with: "Soo tasty"
@@ -28,7 +29,7 @@ feature 'Tapa Creation', %q{
     }.to change(Tapa, :count).by(1)
 
     tapa = Tapa.first
-    expect(tapa.title).to eq("Egg roll")
+    expect(tapa.title).to eq(title)
     expect(tapa.ratings.first.score).to eq(4)
   end
 
