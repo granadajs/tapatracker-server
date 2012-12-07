@@ -6,6 +6,7 @@ class Tapa < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
 
   belongs_to :location
+  belongs_to :user
 
   mount_uploader :image, ImageUploader
 

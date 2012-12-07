@@ -1,1 +1,22 @@
-h2 Hello #{current_user.email}
+#profile-image
+  = profile_image
+.profile
+  h2 
+    = "Hello #{current_user.email}"
+    = link_to "Edit profile", edit_user_registration_path(current_user), class: "btn btn-mini"
+  - tapas = current_user.tapas.includes(:review)
+  h3 Reviews: #{tapas.size }
+  h3= "Locations Visited: #{tapas.map{ |tapa| tapa.location }.uniq.size }"
+  h3= "Average Review: #{tapas.any? ? tapas.sum { |tapa| tapa.review.score } / tapas.size : 0 }"
+.images
+  h2 Recent Images
+  ul
+    = recent_images
+.reviews
+  h2  Recent Reviews
+  - reviews = recent_reviews
+  - if recent_reviews.any?
+    = render partial: "review", collection: recent_reviews
+  - else
+    .review
+      h4= link_to "Review a tapa", new_tapa_path

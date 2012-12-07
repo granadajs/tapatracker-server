@@ -10,4 +10,21 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   validate :email, presence: true
+
+  has_many :tapas, order: "created_at DESC"
+
+  mount_uploader :profile_image, ImageUploader
+
+
+  def add_tapa tapa
+    tapas << tapa
+  end
+
+  def recent_images
+    tapas.map { |tapa| tapa.image.url }.compact
+  end
+
+  def recent_reviews count=5
+    tapas.limit(count)
+  end
 end

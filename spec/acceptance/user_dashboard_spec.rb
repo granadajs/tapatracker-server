@@ -27,9 +27,10 @@ feature 'User dashboard', %q{
     page.should have_content "Recent Images"
     page.should have_content "Recent Reviews"
     # this should only appear with no reviews
-    page.should have_selector :a, content: "Review a tapa"
+    save_and_open_page
+    page.should have_selector "a", text: "Review a tapa"
 
-    page.should have_selector :a, content: "Edit profile"
+    page.should have_selector "a", text: "Edit profile"
 
   end
 
