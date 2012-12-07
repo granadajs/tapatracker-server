@@ -1,9 +1,10 @@
 class Tapa < ActiveRecord::Base
   attr_accessible :title, :description, :image
 
-  has_many :categorizations
+  has_many :categorizations, dependent: :destroy
   has_many :categories, through: :categorizations
-  has_many :ratings, dependent: :destroy
+
+  has_one :rating, dependent: :destroy
 
   belongs_to :location
   belongs_to :user
@@ -19,13 +20,8 @@ class Tapa < ActiveRecord::Base
     categories.last.name if categories.last
   end
 
-  def rating=(score)
-    rating = Rating.create(score: score.to_i)
-    ratings << rating
-  end
-
-  def rating
-    0
+  def add_rating score
+    self.rating = Rating.create(score: score.to_i)
   end
 
   def average_rating

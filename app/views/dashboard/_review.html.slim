@@ -1,5 +1,5 @@
 .review
   h4= link_to review.title, tapa_path(review)
   .stars
-    - tapa.reviews.score.each
+    - review.rating.score.times do
       span.star

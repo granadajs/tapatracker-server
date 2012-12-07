@@ -4,10 +4,16 @@
   h2 
     = "Hello #{username}"
     = link_to "Edit profile", edit_profile_path(current_user), class: "btn btn-mini"
-  - tapas = current_user.tapas.includes(:review)
-  h3 Reviews: #{tapas.size }
-  h3= "Locations Visited: #{tapas.map{ |tapa| tapa.location }.uniq.size }"
-  h3= "Average Review: #{tapas.any? ? tapas.sum { |tapa| tapa.review.score } / tapas.size : 0 }"
+  - tapas = current_user.tapas.includes(:rating)
+  h3
+    | Reviews: 
+    span.score= tapas.size
+  h3
+    | Locations Visited: 
+    span.score= tapas.map{ |tapa| tapa.location }.uniq.size
+  h3
+    | Average Review: 
+    span.score= tapas.any? ? tapas.sum { |tapa| tapa.rating.score } / tapas.size : 0
 .images
   h2 Recent Images
   ul

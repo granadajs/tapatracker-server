@@ -48,6 +48,17 @@ feature 'User dashboard', %q{
     page.should have_content "fartfart"
     page.should_not have_content email
 
+    ##################
+    # Images and reviews
+    ##################
+
+    5.times { tapa = create(:tapa); user.add_tapa tapa }
+    visit dashboard_path
+
+    page.should have_selector "span.score", text: "5"
+    average = user.tapas.sum { |tapa| tapa.rating.score } / user.tapas.count
+    page.should have_selector "span.score", text: average.to_s
+    page.should have_content Tapa.order("created_at DESC").first.title
   end
 
 end
