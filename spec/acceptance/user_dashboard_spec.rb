@@ -41,9 +41,9 @@ feature 'User dashboard', %q{
     # Edit profile
     ##################
 
-    click_link "Edit profile"
-    fill_in "Username", with: "fartfart"
-    click_button "Update Profile"
+    click_link    "Edit profile"
+    fill_in       "Username",  with: "fartfart"
+    click_button  "Update Profile"
     # back on dashboard page
     page.should have_content "fartfart"
     page.should_not have_content email
@@ -53,9 +53,11 @@ feature 'User dashboard', %q{
     ##################
 
     5.times { tapa = create(:tapa); user.add_tapa tapa }
+
     visit dashboard_path
 
     page.should have_selector "span.score", text: "5"
+    page.should have_selector "li.recent-image img", count: 5
     average = user.tapas.sum { |tapa| tapa.rating.score } / user.tapas.count
     page.should have_selector "span.score", text: average.to_s
     page.should have_content Tapa.order("created_at DESC").first.title

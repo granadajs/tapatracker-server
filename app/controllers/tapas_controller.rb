@@ -5,7 +5,8 @@ class TapasController < ApplicationController
 
   def create
     @tapa = Tapa.new(params[:tapa])
-    @tapa.rating = params[:tapa][:rating]
+    @tapa.add_rating params[:rating]
+    @tapa.user_id = current_user.id
     if @tapa.save
       redirect_to tapa_path(@tapa), notice: "Tapa review saved!"
     else
