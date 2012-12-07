@@ -1,0 +1,10 @@
+h1 Edit your profile
+
+= render 'profile_form'
+= render 'password_form'
+
+h3 Cancel my account
+
+p Unhappy? #{link_to "Cancel my account", registration_path(@profile), :data => { :confirm => "Are you sure?" }, :method => :delete} .
+
+= link_to "Back", :back

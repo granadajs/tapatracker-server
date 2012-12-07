@@ -1,0 +1,10 @@
+= form_for @profile, url: profile_path(@profile) do |f|
+  legend Update profile information
+  .field
+    = f.label :username
+    = f.text_field :username
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.submit "Update Profile"

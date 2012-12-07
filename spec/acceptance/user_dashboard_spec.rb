@@ -6,7 +6,10 @@ feature 'User dashboard', %q{
   I want to create a simple profile
 } do
 
-  scenario 'User signs up, redirected to dashboard' do
+  scenario 'User signs up, redirected to dashboard, edits profile' do
+    ##################
+    # Sign up
+    ##################
     visit sign_up_path
     email, password = Faker::Internet.email, "password"
     fill_in "Email", with: email
@@ -15,6 +18,10 @@ feature 'User dashboard', %q{
     expect {
       click_button "Sign up"
     }.to change(User, :count).by(1)
+
+    ##################
+    # On dashboard page
+    ##################
 
     user = User.find_by_email email
 
@@ -27,10 +34,19 @@ feature 'User dashboard', %q{
     page.should have_content "Recent Images"
     page.should have_content "Recent Reviews"
     # this should only appear with no reviews
-    save_and_open_page
     page.should have_selector "a", text: "Review a tapa"
-
     page.should have_selector "a", text: "Edit profile"
+
+    ##################
+    # Edit profile
+    ##################
+
+    click_link "Edit profile"
+    fill_in "Username", with: "fartfart"
+    click_button "Update Profile"
+    # back on dashboard page
+    page.should have_content "fartfart"
+    page.should_not have_content email
 
   end
 

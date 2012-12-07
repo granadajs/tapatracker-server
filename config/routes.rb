@@ -1,5 +1,7 @@
 Tapatracker::Application.routes.draw do
 
+  resources :profile, only: [:edit, :update]
+
   match "dashboard", to: "dashboard#index", as: :dashboard
 
   resources :tapas

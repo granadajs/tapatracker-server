@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
     :database_authenticatable, :registerable
 
   # Setup accessible (or protected) attributes for your model attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name
-  # attr_accessible :title, :body
+  attr_accessible :email, :password, :password_confirmation, :username
 
   validate :email, presence: true
 
@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
     tapas << tapa
   end
 
-  def recent_images
-    tapas.map { |tapa| tapa.image.url }.compact
+  def recent_images count=5
+    tapas.map { |tapa| tapa.image.url }.compact.slice(0,count)
   end
 
   def recent_reviews count=5

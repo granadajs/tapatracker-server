@@ -2,8 +2,8 @@
   = profile_image
 .profile
   h2 
-    = "Hello #{current_user.email}"
-    = link_to "Edit profile", edit_user_registration_path(current_user), class: "btn btn-mini"
+    = "Hello #{username}"
+    = link_to "Edit profile", edit_profile_path(current_user), class: "btn btn-mini"
   - tapas = current_user.tapas.includes(:review)
   h3 Reviews: #{tapas.size }
   h3= "Locations Visited: #{tapas.map{ |tapa| tapa.location }.uniq.size }"
