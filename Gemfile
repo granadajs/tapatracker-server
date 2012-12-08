@@ -22,6 +22,8 @@ gem "bootstrap-sass"
 gem "rails_bootstrap_helpers"
 gem "pry-rails", :group => :development
 gem "pry-nav", :group => :development
+gem 'typhoeus'
+gem 'yajl-ruby', require: 'yajl'
 
 group :test do
   gem 'steak'

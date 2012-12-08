@@ -10,20 +10,14 @@ feature 'User dashboard', %q{
     ##################
     # Sign up
     ##################
-    visit sign_up_path
-    email, password = Faker::Internet.email, "password"
-    fill_in "Email", with: email
-    fill_in "Password", with: password
-    fill_in "Password confirmation", with: password
+    user,email,password = nil,nil,nil
     expect {
-      click_button "Sign up"
+      user,email,password = sign_up
     }.to change(User, :count).by(1)
 
     ##################
     # On dashboard page
     ##################
-
-    user = User.find_by_email email
 
     page.should have_content email
     page.should have_selector "#profile-image img"

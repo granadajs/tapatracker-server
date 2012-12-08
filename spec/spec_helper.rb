@@ -14,9 +14,10 @@ Spork.prefork do
   require 'capybara/rspec'
   #require 'capybara/poltergeist'
   require 'vcr'
+  require 'fakeweb'
 
   VCR.configure do |c|
-    c.cassette_library_dir = 'acceptance/fixtures/vcr_cassettes'
+    c.cassette_library_dir = 'spec/acceptance/fixtures/vcr_cassettes'
     c.hook_into :fakeweb
   end
 
@@ -36,11 +37,11 @@ Spork.prefork do
 
     #Capybara.javascript_driver = :selenium
     #Capybara.javascript_driver = :poltergeist
-    #Capybara.javascript_driver = :webkit
-    #Capybara.run_server = true
-    #Capybara.server_port = 7000
-    #Capybara.app_host = "http://localhost:#{Capybara.server_port}"
-    #ActionController::Base.asset_host = Capybara.app_host
+    Capybara.javascript_driver = :webkit
+    Capybara.run_server = true
+    Capybara.server_port = 7000
+    Capybara.app_host = "http://localhost:#{Capybara.server_port}"
+    ActionController::Base.asset_host = Capybara.app_host
 
 
     # If you're not using ActiveRecord, or you'd prefer not to run each of your

@@ -14,6 +14,17 @@ module HelperMethods
     click_button "Sign in"
   end
 
+  def sign_up
+    visit sign_up_path
+    email, password = Faker::Internet.email, "password"
+    fill_in "Email", with: email
+    fill_in "Password", with: password
+    fill_in "Password confirmation", with: password
+    click_button "Sign up"
+    user = User.find_by_email email
+    [user,email,password]
+  end
+
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance
