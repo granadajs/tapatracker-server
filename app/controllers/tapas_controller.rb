@@ -5,9 +5,9 @@ class TapasController < ApplicationController
 
   def create
     @tapa = Tapa.new(params[:tapa])
-    @tapa.add_rating params[:rating]
     @tapa.user_id = current_user.id
     if @tapa.save
+      @tapa.add_rating params[:rating]
       redirect_to tapa_path(@tapa), notice: "Tapa review saved!"
     else
       render :new, alert: "Error processing your request!"
