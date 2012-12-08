@@ -26,6 +26,8 @@ gem "pry-nav", :group => :development
 group :test do
   gem 'steak'
   gem 'rb-fsevent', '~> 0.9.1'
+  gem 'vcr'
+  gem 'fakeweb'
   gem 'spork', '~> 1.0rc'
   gem 'launchy'
   gem 'faker'

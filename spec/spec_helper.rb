@@ -13,6 +13,12 @@ Spork.prefork do
   require 'rspec/rails'
   require 'capybara/rspec'
   #require 'capybara/poltergeist'
+  require 'vcr'
+
+  VCR.configure do |c|
+    c.cassette_library_dir = 'acceptance/fixtures/vcr_cassettes'
+    c.hook_into :fakeweb
+  end
 
   RSpec.configure do |config|
 
